@@ -1,4 +1,7 @@
 # JavaApp
 # App for advertising and selling stuff
 
-In this app we allow user to 
+Java/JavaFX
+H2 database
+
+In this app we can create new private or business user and advertise service, cars or apartments.

@@ -16,26 +16,23 @@ import javafx.util.Duration;
 
 /**
  * Klasa Niti
+ * 
  * @author Marko
  *
  */
 public class DatumObjaveNit implements Runnable {
 
-	
-
 	@Override
 	public void run() {
-		
 
 		Timeline fiveSecondsWonder = new Timeline(new KeyFrame(Duration.seconds(10), new EventHandler<ActionEvent>() {
-			
+
 			@Override
 			public void handle(ActionEvent event) {
-				
+
 				Platform.runLater(new DatumObjaveNit() {
 					@Override
 					public void run() {
-						
 
 						Prodaja prodaja = null;
 						List<Prodaja> lista = new ArrayList<>();
@@ -45,14 +42,16 @@ public class DatumObjaveNit implements Runnable {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-		
+
 						Alert alert = new Alert(Alert.AlertType.INFORMATION);
 						alert.setHeaderText(null);
-						alert.setContentText(lista.get(lista.size()-1).getArtikl() + " " + lista.get(lista.size()-1).getKorisnik() + " " + lista.get(lista.size()-1).getDatumObjave());
+						alert.setContentText(lista.get(lista.size() - 1).getArtikl() + " "
+								+ lista.get(lista.size() - 1).getKorisnik() + " "
+								+ lista.get(lista.size() - 1).getDatumObjave());
 
 						alert.showAndWait();
 					}
-				}); 
+				});
 			}
 		}));
 		fiveSecondsWonder.setCycleCount(Timeline.INDEFINITE);

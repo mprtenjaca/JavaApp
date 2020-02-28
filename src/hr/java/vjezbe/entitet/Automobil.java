@@ -99,32 +99,25 @@ public class Automobil extends Artikl implements Vozilo {
 			@SuppressWarnings("unused")
 			BigDecimal grupa = izracunajGrupuOsiguranja();
 
-			oglas = "Naslov automobila: " + getNaslov() 
-					+ "\nOpis automobila: " + getOpis() 
-					+ "\nSnaga automobila: " + getSnagaKs() 
-					+ "\nIzracun osiguranja automobila: " + izracunajCijenuOsiguranja()
-					+ "\nStanje automobila: " + getStanje()
-					+ "\nCijena automobila: " + getCijena();
+			oglas = "Naslov automobila: " + getNaslov() + "\nOpis automobila: " + getOpis() + "\nSnaga automobila: "
+					+ getSnagaKs() + "\nIzracun osiguranja automobila: " + izracunajCijenuOsiguranja()
+					+ "\nStanje automobila: " + getStanje() + "\nCijena automobila: " + getCijena();
 		} catch (NemoguceOdreditiGrupuOsiguranjaException e) {
 			logger.error("Pogreška prilikom određivanja cijene osiguranja!");
 			logger.error(e.getMessage(), e);
-			oglas = "Naslov automobila: " + getNaslov() 
-					+ "\nOpis automobila: " + getOpis() 
-					+ "\nSnaga automobila: " + getSnagaKs() 
-					+ "\nIzracun osiguranja automobila: " + e.getMessage() 
-					+ "\nStanje automobila: " + getStanje()
-					+ "\nCijena automobila: " + getCijena();
+			oglas = "Naslov automobila: " + getNaslov() + "\nOpis automobila: " + getOpis() + "\nSnaga automobila: "
+					+ getSnagaKs() + "\nIzracun osiguranja automobila: " + e.getMessage() + "\nStanje automobila: "
+					+ getStanje() + "\nCijena automobila: " + getCijena();
 
 		}
 		return oglas;
 
 	}
-	
-
 
 	@Override
 	public String toString() {
-		return getNaslov() + ", " + getOpis() + ", " + getCijena() + "kn, " + getSnagaKs() +"ks, stanje:" + getStanje().toString();
+		return getNaslov() + ", " + getOpis() + ", " + getCijena() + "kn, " + getSnagaKs() + "ks, stanje:"
+				+ getStanje().toString();
 	}
 
 }

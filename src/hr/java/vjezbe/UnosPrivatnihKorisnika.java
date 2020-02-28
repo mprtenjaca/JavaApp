@@ -52,7 +52,8 @@ public class UnosPrivatnihKorisnika implements Initializable {
 			PrivatniKorisnik privatni1 = null;
 			List<PrivatniKorisnik> listItems = BazaPodataka.dohvatiPrivatnogKorisnikaPremaKriterijima(privatni1);
 			OptionalLong maxId = listItems.stream().mapToLong(Entitet::getId).max();
-			PrivatniKorisnik privatni = new PrivatniKorisnik(maxId.getAsLong() + 1, unesiIme.getText(), unesiPrezime.getText(), unesiEmail.getText(), unesiTelefon.getText());
+			PrivatniKorisnik privatni = new PrivatniKorisnik(maxId.getAsLong() + 1, unesiIme.getText(),
+					unesiPrezime.getText(), unesiEmail.getText(), unesiTelefon.getText());
 			BazaPodataka.pohraniNovogPrivatnigKorisnika(privatni);
 
 //			List<Korisnik> listItems = new ArrayList<Korisnik>();
@@ -66,6 +67,7 @@ public class UnosPrivatnihKorisnika implements Initializable {
 
 	/**
 	 * Validacija text filed-ova
+	 * 
 	 * @return Vraca true ili false
 	 */
 	public boolean validation() {

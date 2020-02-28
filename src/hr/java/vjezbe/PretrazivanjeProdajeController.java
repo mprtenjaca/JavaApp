@@ -31,8 +31,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class PretrazivanjeProdajeController implements Initializable{
-	
+public class PretrazivanjeProdajeController implements Initializable {
+
 	@FXML
 	private TableView<Prodaja> tableView;
 	@FXML
@@ -41,15 +41,15 @@ public class PretrazivanjeProdajeController implements Initializable{
 	private TableColumn<Prodaja, String> korisnikCol;
 	@FXML
 	private TableColumn<Prodaja, LocalDate> datumCol;
-	
+
 	@FXML
 	private ComboBox<Artikl> comboArtikli;
 	@FXML
 	private ComboBox<Korisnik> comboKorisnici;
-	
+
 	@FXML
 	private DatePicker datePicker;
-	
+
 	@FXML
 	private Button pretraziButton;
 
@@ -57,11 +57,11 @@ public class PretrazivanjeProdajeController implements Initializable{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+
 		oglasCol.setCellValueFactory(new PropertyValueFactory<Prodaja, String>("artikl"));
 		korisnikCol.setCellValueFactory(new PropertyValueFactory<Prodaja, String>("korisnik"));
 		datumCol.setCellValueFactory(new PropertyValueFactory<Prodaja, LocalDate>("datumObjave"));
-		
+
 		try {
 			tableView.setItems(createTable());
 		} catch (BazaPodatakaException e) {
@@ -71,56 +71,57 @@ public class PretrazivanjeProdajeController implements Initializable{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	
-		
+
 	}
 
 	/**
-	 * Filtrira listu prodaje te ih dodaje u Observable listu koja se dodaje u tableview
+	 * Filtrira listu prodaje te ih dodaje u Observable listu koja se dodaje u
+	 * tableview
+	 * 
 	 * @return vraca observable listu
-	 * @throws IOException Input/Output Exception
+	 * @throws IOException           Input/Output Exception
 	 * @throws BazaPodatakaException Custom oznacena iznimka baze podataka
 	 */
 	private ObservableList<Prodaja> createTable() throws BazaPodatakaException, IOException {
-		
+
 		Prodaja prodaja = null;
 		List<Prodaja> listItems = BazaPodataka.dohvatiProdajuPremaKriterijima(prodaja);
 		List<Artikl> artikli = new ArrayList<Artikl>();
 		List<Korisnik> korisnici = new ArrayList<Korisnik>();
-		
+
 		Automobil auto = null;
 		Stan stan = null;
 		Usluga usluga = null;
 		List<Automobil> listAuti = BazaPodataka.dohvatiAutomobilePremaKriterijima(auto);
 		List<Stan> listStan = BazaPodataka.dohvatiStanovePremaKriterijima(stan);
 		List<Usluga> listUsluga = BazaPodataka.dohvatiUslugePremaKriterijima(usluga);
-		
+
 		PrivatniKorisnik privatniKorisnik = null;
 		PoslovniKorisnik poslovniKorisnik = null;
 		List<PrivatniKorisnik> listPrivatni = BazaPodataka.dohvatiPrivatnogKorisnikaPremaKriterijima(privatniKorisnik);
 		List<PoslovniKorisnik> listPoslovni = BazaPodataka.dohvatiPoslovnogKorisnikaPremaKriterijima(poslovniKorisnik);
-		
+
 		artikli.addAll(listAuti);
 		artikli.addAll(listStan);
 		artikli.addAll(listUsluga);
-		
+
 		korisnici.addAll(listPrivatni);
 		korisnici.addAll(listPoslovni);
-		
+
 		comboArtikli.getItems().addAll(artikli);
 		comboKorisnici.getItems().addAll(korisnici);
-		
-		
+
 		HashSet<Prodaja> set = new HashSet<>();
 		set.addAll(listItems);
-		
+
 		observableProdaja = FXCollections.observableArrayList(set);
-		
+
 		return observableProdaja;
 	}
-	
+
 	/**
-	 * Uzima vrijednost iz ComboBox-eva te filtira listu koja se slaze sa trazenim rijecima
+	 * Uzima vrijednost iz ComboBox-eva te filtira listu koja se slaze sa trazenim
+	 * rijecima
 	 */
 	@FXML
 	private void filter() {
@@ -142,7 +143,7 @@ public class PretrazivanjeProdajeController implements Initializable{
 		SortedList<Prodaja> sortedList = new SortedList<>(filteredList);
 		sortedList.comparatorProperty().bind(tableView.comparatorProperty());
 		tableView.setItems(sortedList);
-		
+
 	}
 
 }

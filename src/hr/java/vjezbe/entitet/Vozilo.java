@@ -6,6 +6,7 @@ import hr.java.vjezbe.iznimke.NemoguceOdreditiGrupuOsiguranjaException;
 
 /**
  * Sucelje Vozilo u kojem se pozivaju funkcije za obradu vozila
+ * 
  * @author Marko Prtenjaca
  * @version 1.0
  */

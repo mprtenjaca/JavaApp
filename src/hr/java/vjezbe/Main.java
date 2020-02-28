@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 
 /**
  * Main metoda koja u kojoj se poziva program
+ * 
  * @author Marko Prtenjaca
  * @version 1.0
  */
@@ -38,18 +39,17 @@ public class Main extends Application {
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
-			
+
 			DatumObjaveNit nit = new DatumObjaveNit();
-			
+
 			ExecutorService ex = Executors.newFixedThreadPool(1);
-			
+
 			ex.execute(nit);
-			
+
 			ex.shutdown();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-
 
 }

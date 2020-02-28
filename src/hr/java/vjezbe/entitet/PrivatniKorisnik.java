@@ -76,7 +76,5 @@ public class PrivatniKorisnik extends Korisnik {
 	public String toString() {
 		return getIme() + ", " + getPrezime() + ", email:" + getEmail() + ", tel:" + getTelefon();
 	}
-	
-	
 
 }

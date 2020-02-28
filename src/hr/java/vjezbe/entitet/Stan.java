@@ -37,6 +37,7 @@ public class Stan extends Artikl implements Nekretnina {
 		super(id, naslov, opis, cijena, stanje);
 		this.kvadratura = kvadratura;
 	}
+
 	/**
 	 * Dohvaca kvadrauru stana
 	 * 
@@ -76,12 +77,10 @@ public class Stan extends Artikl implements Nekretnina {
 		return poruka;
 
 	}
-	
 
 	@Override
 	public String toString() {
 		return getNaslov() + ", " + getOpis() + ", " + getCijena() + "kn, stanje:" + getStanje().toString();
 	}
-
 
 }

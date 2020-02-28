@@ -26,7 +26,7 @@ public abstract class Artikl extends Entitet {
 	 * @param opis   - Opis artikla
 	 * @param cijena - Cijena artikla
 	 * @param stanje - Stanje artikla
-	 * @param id      - Id eniteta
+	 * @param id     - Id eniteta
 	 */
 	public Artikl(Long id, String naslov, String opis, BigDecimal cijena, Stanje stanje) {
 		super(id);
@@ -35,7 +35,7 @@ public abstract class Artikl extends Entitet {
 		this.cijena = cijena;
 		this.stanje = stanje;
 	}
-	
+
 	/**
 	 * Metoda u kojoj se sastavlja izgled oglasa
 	 * 
@@ -53,7 +53,7 @@ public abstract class Artikl extends Entitet {
 	}
 
 	/**
-	 *Hash metoda artikla
+	 * Hash metoda artikla
 	 */
 	@Override
 	public int hashCode() {
@@ -145,6 +145,7 @@ public abstract class Artikl extends Entitet {
 
 	/**
 	 * Dohvaca stanje artikla
+	 * 
 	 * @return - Stanje artikla
 	 */
 	public Stanje getStanje() {
@@ -153,6 +154,7 @@ public abstract class Artikl extends Entitet {
 
 	/**
 	 * Postavlja stanje artikla
+	 * 
 	 * @param stanje - Stanje artikla
 	 */
 	public void setStanje(Stanje stanje) {

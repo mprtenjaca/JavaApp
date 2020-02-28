@@ -41,7 +41,5 @@ public class Usluga extends Artikl {
 	public String toString() {
 		return getNaslov() + ", " + getOpis() + ", " + getCijena() + "kn, stanje:" + getStanje().toString();
 	}
-	
-	
 
 }

@@ -24,7 +24,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 
 /**
- * Klasa koja kontrolira fxml za pretragu poslovnih korisnika i implementira sucelje Initializable
+ * Klasa koja kontrolira fxml za pretragu poslovnih korisnika i implementira
+ * sucelje Initializable
+ * 
  * @author Marko
  *
  */
@@ -40,7 +42,7 @@ public class PoslovniKorisniciController implements Initializable {
 	private TableColumn<PoslovniKorisnik, String> emailCol;
 	@FXML
 	private TableColumn<PoslovniKorisnik, String> telefonCol;
-	
+
 	@FXML
 	private TextField searchNaziv;
 	@FXML
@@ -77,9 +79,11 @@ public class PoslovniKorisniciController implements Initializable {
 	}
 
 	/**
-	 * Filtrira listu korisnika te ih dodaje u Observable listu koja se dodaje u tableview
+	 * Filtrira listu korisnika te ih dodaje u Observable listu koja se dodaje u
+	 * tableview
+	 * 
 	 * @return vraca observable listu
-	 * @throws IOException Input/Oputput Exception
+	 * @throws IOException           Input/Oputput Exception
 	 * @throws BazaPodatakaException Oznacena custom iznimka baze podataka
 	 */
 	private ObservableList<PoslovniKorisnik> createTable() throws BazaPodatakaException, IOException {
@@ -88,18 +92,19 @@ public class PoslovniKorisniciController implements Initializable {
 		listItems = BazaPodataka.dohvatiPoslovnogKorisnikaPremaKriterijima(poslovniKorisnik);
 //		listItems = Datoteke.dohvatiKorisnike().stream().filter(p -> p instanceof PoslovniKorisnik).map(sc -> (PoslovniKorisnik) sc)
 //				.collect(Collectors.toList());
-		
+
 		HashSet<PoslovniKorisnik> set = new HashSet<PoslovniKorisnik>();
 		set.addAll(listItems);
 
 		poslovni = FXCollections.observableArrayList(set);
-		
+
 		return poslovni;
 
 	}
 
 	/**
-	 * Uzima rijeci iz textfielda te filtira listu koja se slaze sa trazenim rijecima
+	 * Uzima rijeci iz textfielda te filtira listu koja se slaze sa trazenim
+	 * rijecima
 	 */
 	@FXML
 	private void filter() {
@@ -116,7 +121,8 @@ public class PoslovniKorisniciController implements Initializable {
 				showItem = showItem && (data.getEmail().toLowerCase().contains(searchEmail.getText().toLowerCase()));
 			}
 			if (!searchTelefon.getText().isEmpty()) {
-				showItem = showItem && (data.getTelefon().toLowerCase().contains(searchTelefon.getText().toLowerCase()));
+				showItem = showItem
+						&& (data.getTelefon().toLowerCase().contains(searchTelefon.getText().toLowerCase()));
 			}
 			return showItem;
 		});
@@ -124,7 +130,7 @@ public class PoslovniKorisniciController implements Initializable {
 		SortedList<PoslovniKorisnik> sortedList = new SortedList<>(filteredList);
 		sortedList.comparatorProperty().bind(tableView.comparatorProperty());
 		tableView.setItems(sortedList);
-		
+
 	}
 
 }

@@ -106,9 +106,5 @@ public class PoslovniKorisnik extends Korisnik {
 	public String toString() {
 		return getNaziv() + ", web:" + getWeb() + ", email:" + getEmail() + ", tel:" + getTelefon();
 	}
-	
-	
-	
-	
 
 }

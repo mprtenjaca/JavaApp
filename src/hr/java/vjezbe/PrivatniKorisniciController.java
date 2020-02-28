@@ -24,7 +24,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 
 /**
- * Klasa koja kontrolira fxml za pretragu privatnih korisnika i implementira sucelje Initializable
+ * Klasa koja kontrolira fxml za pretragu privatnih korisnika i implementira
+ * sucelje Initializable
+ * 
  * @author Marko
  *
  */
@@ -40,7 +42,7 @@ public class PrivatniKorisniciController implements Initializable {
 	private TableColumn<PrivatniKorisnik, String> emailCol;
 	@FXML
 	private TableColumn<PrivatniKorisnik, String> telefonCol;
-	
+
 	@FXML
 	private TextField searchIme;
 	@FXML
@@ -77,31 +79,34 @@ public class PrivatniKorisniciController implements Initializable {
 	}
 
 	/**
-	 * Filtrira listu korisnika te ih dodaje u Observable listu koja se dodaje u tableview
+	 * Filtrira listu korisnika te ih dodaje u Observable listu koja se dodaje u
+	 * tableview
+	 * 
 	 * @return vraca observable listu
-	 * @throws IOException Input/Output Exception
+	 * @throws IOException           Input/Output Exception
 	 * @throws BazaPodatakaException Custom oznacena iznimka baze podataka
 	 */
 	private ObservableList<PrivatniKorisnik> createTable() throws BazaPodatakaException, IOException {
-		
+
 		PrivatniKorisnik privatniKorisnik = null;
 		List<PrivatniKorisnik> listItems = new ArrayList<PrivatniKorisnik>();
 		listItems = BazaPodataka.dohvatiPrivatnogKorisnikaPremaKriterijima(privatniKorisnik);
-		
+
 //		listItems = Datoteke.dohvatiKorisnike().stream().filter(p -> p instanceof PrivatniKorisnik).map(sc -> (PrivatniKorisnik) sc)
 //				.collect(Collectors.toList());
-		
+
 		HashSet<PrivatniKorisnik> set = new HashSet<PrivatniKorisnik>();
 		set.addAll(listItems);
 
 		privatni = FXCollections.observableArrayList(set);
-		
+
 		return privatni;
 
 	}
 
 	/**
-	 * Uzima rijeci iz textfielda te filtira listu koja se slaze sa trazenim rijecima
+	 * Uzima rijeci iz textfielda te filtira listu koja se slaze sa trazenim
+	 * rijecima
 	 */
 	@FXML
 	private void filter() {
@@ -112,13 +117,15 @@ public class PrivatniKorisniciController implements Initializable {
 				showItem = showItem && (data.getIme().toLowerCase().contains(searchIme.getText().toLowerCase()));
 			}
 			if (!searchPrezime.getText().isEmpty()) {
-				showItem = showItem && (data.getPrezime().toLowerCase().contains(searchPrezime.getText().toLowerCase()));
+				showItem = showItem
+						&& (data.getPrezime().toLowerCase().contains(searchPrezime.getText().toLowerCase()));
 			}
 			if (!searchEmail.getText().isEmpty()) {
 				showItem = showItem && (data.getEmail().toLowerCase().contains(searchEmail.getText().toLowerCase()));
 			}
 			if (!searchTelefon.getText().isEmpty()) {
-				showItem = showItem && (data.getTelefon().toLowerCase().contains(searchTelefon.getText().toLowerCase()));
+				showItem = showItem
+						&& (data.getTelefon().toLowerCase().contains(searchTelefon.getText().toLowerCase()));
 			}
 			return showItem;
 		});
@@ -126,7 +133,7 @@ public class PrivatniKorisniciController implements Initializable {
 		SortedList<PrivatniKorisnik> sortedList = new SortedList<>(filteredList);
 		sortedList.comparatorProperty().bind(tableView.comparatorProperty());
 		tableView.setItems(sortedList);
-		
+
 	}
 
 }

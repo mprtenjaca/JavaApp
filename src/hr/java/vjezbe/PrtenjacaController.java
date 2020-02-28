@@ -106,10 +106,10 @@ public class PrtenjacaController {
 		}
 		mainBorderPane.setCenter(root);
 	}
-	
-	
+
 	/**
 	 * Prikazuje scenu za unos automobila
+	 * 
 	 * @param event Event koji se desi kad se pozove funkcija
 	 * @throws Exception Iznimka koja sluzi da uhvati greske
 	 */
@@ -123,9 +123,10 @@ public class PrtenjacaController {
 		}
 		mainBorderPane.setCenter(root);
 	}
-	
+
 	/**
 	 * Prikazuje scenu za unos stanova
+	 * 
 	 * @param event Event koji se desi kad se pozove funkcija
 	 * @throws Exception Iznimka koja sluzi da uhvati greske
 	 */
@@ -139,9 +140,10 @@ public class PrtenjacaController {
 		}
 		mainBorderPane.setCenter(root);
 	}
-	
+
 	/**
 	 * Prikazuje scenu za unos usluge
+	 * 
 	 * @param event Event koji se desi kad se pozove funkcija
 	 * @throws Exception Iznimka koja sluzi da uhvati greske
 	 */
@@ -155,9 +157,10 @@ public class PrtenjacaController {
 		}
 		mainBorderPane.setCenter(root);
 	}
-	
+
 	/**
 	 * Prikazuje scenu za unos privatnih korisnika
+	 * 
 	 * @param event Event koji se desi kad se pozove funkcija
 	 * @throws Exception Iznimka koja sluzi da uhvati greske
 	 */
@@ -171,9 +174,10 @@ public class PrtenjacaController {
 		}
 		mainBorderPane.setCenter(root);
 	}
-	
+
 	/**
 	 * Prikazuje scenu za unos poslovnih korisnika
+	 * 
 	 * @param event Event koji se desi kad se pozove funkcija
 	 * @throws Exception Iznimka koja sluzi da uhvati greske
 	 */
@@ -187,9 +191,7 @@ public class PrtenjacaController {
 		}
 		mainBorderPane.setCenter(root);
 	}
-	
-	
-	
+
 	/**
 	 * Prikazuje fxml za prodaju
 	 * 
@@ -206,9 +208,10 @@ public class PrtenjacaController {
 		}
 		mainBorderPane.setCenter(root);
 	}
-	
+
 	/**
 	 * Prikazuje scenu za unos prodaje
+	 * 
 	 * @param event Event koji se desi kad se pozove funkcija
 	 * @throws Exception Iznimka koja sluzi da uhvati greske
 	 */

@@ -101,9 +101,5 @@ public abstract class Korisnik extends Entitet {
 			return false;
 		return true;
 	}
-	
-	
-	
-	
 
 }

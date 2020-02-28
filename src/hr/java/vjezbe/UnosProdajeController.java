@@ -25,16 +25,16 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 
-public class UnosProdajeController implements Initializable{
-	
+public class UnosProdajeController implements Initializable {
+
 	@FXML
 	private ComboBox<Artikl> comboArtikli;
 	@FXML
 	private ComboBox<Korisnik> comboKorisnici;
-	
+
 	@FXML
 	private DatePicker datePicker;
-	
+
 	@FXML
 	private Button unesiButton;
 
@@ -42,7 +42,7 @@ public class UnosProdajeController implements Initializable{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+
 		try {
 			populateComboBox();
 		} catch (BazaPodatakaException e) {
@@ -52,57 +52,57 @@ public class UnosProdajeController implements Initializable{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
-	
+
 	private void populateComboBox() throws BazaPodatakaException, IOException {
-		
+
 		Prodaja prodaja = null;
 		List<Prodaja> listItems = BazaPodataka.dohvatiProdajuPremaKriterijima(prodaja);
 		List<Artikl> artikli = new ArrayList<Artikl>();
 		List<Korisnik> korisnici = new ArrayList<Korisnik>();
-		
+
 		Automobil auto = null;
 		Stan stan = null;
 		Usluga usluga = null;
 		List<Automobil> listAuti = BazaPodataka.dohvatiAutomobilePremaKriterijima(auto);
 		List<Stan> listStan = BazaPodataka.dohvatiStanovePremaKriterijima(stan);
 		List<Usluga> listUsluga = BazaPodataka.dohvatiUslugePremaKriterijima(usluga);
-		
+
 		PrivatniKorisnik privatniKorisnik = null;
 		PoslovniKorisnik poslovniKorisnik = null;
 		List<PrivatniKorisnik> listPrivatni = BazaPodataka.dohvatiPrivatnogKorisnikaPremaKriterijima(privatniKorisnik);
 		List<PoslovniKorisnik> listPoslovni = BazaPodataka.dohvatiPoslovnogKorisnikaPremaKriterijima(poslovniKorisnik);
-		
+
 		artikli.addAll(listAuti);
 		artikli.addAll(listStan);
 		artikli.addAll(listUsluga);
-		
+
 		korisnici.addAll(listPrivatni);
 		korisnici.addAll(listPoslovni);
-		
+
 		comboArtikli.getItems().addAll(artikli);
 		comboKorisnici.getItems().addAll(korisnici);
-		
+
 	}
 
 	/**
 	 * Unosi podatke u bazu podataka
+	 * 
 	 * @throws BazaPodatakaException Custom Exception baze podataka
-	 * @throws IOException Input/Output Exception
+	 * @throws IOException           Input/Output Exception
 	 */
-	public void unesi() throws BazaPodatakaException, IOException{
-		
-		if(validation()) {
-			
+	public void unesi() throws BazaPodatakaException, IOException {
+
+		if (validation()) {
+
 			Prodaja prodaja = new Prodaja(comboArtikli.getValue(), comboKorisnici.getValue(), datePicker.getValue());
 			BazaPodataka.pohraniNovuProdaju(prodaja);
-			
+
 		}
-		
+
 	}
-	
-	
+
 	/**
 	 * Validacija comboboxeva
 	 * 

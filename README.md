@@ -1,5 +1,5 @@
 # JavaApp
-# App for advertising and selling stuff
+# App for advertising and selling
 
 Java/JavaFX
 H2 database
